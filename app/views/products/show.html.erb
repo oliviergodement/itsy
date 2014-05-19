@@ -1,2 +1,15 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1><%= @product.name %></h1>
+
+<%= image_tag "http://cache.cosmopolitan.fr/data/photo/w451_c18/robe_bleu_forever21.jpg", size: "300x200", alt: "robe bleue"%>
+
+Price : <strong><%= @product.price %> €</strong>
+
+Localization : <strong><%= @product.localization %></strong>
+
+Quantity : <%= @product.quantity %> left.
+
+Added on <%= @product.created_at %>
+
+Description : <strong><%= @product.description %></strong>
+
+
