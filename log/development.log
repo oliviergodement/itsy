@@ -113,3 +113,32 @@ Migrating to CreatePictures (20140519093048)
   [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"  WHERE "pictures"."product_id" = $1  [["product_id", 1]]
   [1m[36mProduct Load (0.4ms)[0m  [1mSELECT  "products".* FROM "products"  WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 1]]
   [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"  WHERE "pictures"."product_id" = $1  [["product_id", 1]]
+  [1m[36m (30.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (19.1ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCategories (20140519092821)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (27.9ms)[0m  [1mCREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (6.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140519092821"]]
+  [1m[36m (6.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProducts (20140519093023)
+  [1m[35m (6.2ms)[0m  BEGIN
+  [1m[36m (5.1ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "name" character varying(255), "price" float, "localization" character varying(255), "description" text, "quantity" integer, "category_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE  INDEX  "index_products_on_category_id" ON "products"  ("category_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140519093023"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Migrating to CreatePictures (20140519093048)
+  [1m[36m (6.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (15.7ms)[0m  CREATE TABLE "pictures" ("id" serial primary key, "picture_url" character varying(255), "alt" character varying(255), "product_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.3ms)[0m  [1mCREATE  INDEX  "index_pictures_on_product_id" ON "pictures"  ("product_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140519093048"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to AddAttachmentPictureToPictures (20140519123128)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.2ms)[0m  [1mALTER TABLE "pictures" ADD COLUMN "picture_file_name" character varying(255)[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "pictures" ADD COLUMN "picture_content_type" character varying(255)
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "pictures" ADD COLUMN "picture_file_size" integer[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "pictures" ADD COLUMN "picture_updated_at" timestamp
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140519123128"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
