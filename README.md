@@ -14,3 +14,5 @@ To-do :
 
 
 - faire du css à la fin
+- dégager l'arrondi sur les centimes quand nul dans prix
+- le prix de mon cendrier il merde
