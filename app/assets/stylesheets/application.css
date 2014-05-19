@@ -10,6 +10,21 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap
  *= require_tree .
  *= require_self
+
  */
+
+ h1 {
+  color: orange;
+ }
+
+#logo-text{
+  color: orange;
+  font-size: 24px;
+}
+
+.links {
+  font-size: 20px;
+}
