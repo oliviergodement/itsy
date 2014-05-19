@@ -16,4 +16,10 @@ class PicturesController < ApplicationController
 
   def destroy
   end
+
+private
+
+  def picture_params
+    params.require(:picture).permit(:alt, :picture_url, :picture)
+  end
 end
