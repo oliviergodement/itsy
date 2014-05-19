@@ -1,9 +1,9 @@
-<%= form_for(@picture, :html => { :multipart => true }) do |f| %> !
-[...]
+<%= form_for(@picture, :html => { :multipart => true }) do |f| %>
+
 <div class="field">
-<%= f.label :picture %><br> <%= f.file_field :picture %>
-   </div>
-   <div class="actions">
-     <%= f.submit %>
-   </div>
-<% end %>
+  <%= f.label :picture %><br>
+  <%= f.file_field :s3picture %>
+</div>
+<div class="actions">
+ <%= f.submit %>
+</div>
