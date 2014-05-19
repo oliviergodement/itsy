@@ -1,17 +1,21 @@
 <h1><%= @product.name %></h1>
 
 <% @product.pictures.each do |picture| %>
-  <%= image_tag picture.picture_url, size: "200x300", alt: picture.alt %>
+<%= image_tag picture.picture_url, size: "200x300", alt: picture.alt %>
 <% end %>
-
-Price : <strong><%= @product.price %> €</strong>
-
-Localization : <strong><%= @product.localization %></strong>
-
-Quantity : <%= @product.quantity %> left.
-
-Added on <%= @product.created_at %>
-
-Description : <strong><%= @product.description %></strong>
-
+<div>
+  Price : <%= @product.price %> €
+</div>
+<div>
+  Localization : <%= @product.localization %>
+</div>
+<div>
+  Quantity : <%= @product.quantity %> left.
+</div>
+<div>
+  Added on <%= @product.created_at.to_date %>
+</div>
+<div>
+  Description :<%= @product.description %>
+</div>
 
