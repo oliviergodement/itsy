@@ -1,8 +1,11 @@
 class PicturesController < ApplicationController
   def new
+    @picture = Picture.new
   end
 
   def create
+    @picture = Picture.new(picture_params)
+    @picture.save
   end
 
   def edit
@@ -20,6 +23,6 @@ class PicturesController < ApplicationController
 private
 
   def picture_params
-    params.require(:picture).permit(:alt, :picture_url, :picture)
+    params.require(:picture).permit(:alt, :picture_url, :s3picture)
   end
 end
