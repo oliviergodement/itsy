@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   def new
+    @picture = Picture.new
   end
 
   def create
@@ -15,5 +16,11 @@ class PicturesController < ApplicationController
   end
 
   def destroy
+  end
+
+private
+
+  def picture_params
+    params.require(:picture).permit(:alt, :picture_url, :picture)
   end
 end
