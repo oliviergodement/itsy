@@ -1,19 +1,24 @@
-<h1>Products of <%= @category.name %></h1>
+<div class="container">
 
+  <div class="page-header">
+    <h1 class="text-center"><%= @category.name.capitalize %></h1>
+    <h1 class="text-right"><small><%= @products.length %> products</small></h1>
+  </div>
 
-<table>
-   <thead>
-  <tr>
-     <th>Product name</th>
-     <th>Price</th>
-  </tr>
- </thead>
-  <% @products.each do |product| %>
-    <tr>
-      <td><%= link_to(product.name, product_path(product))%></td>
-      <td><%= product.price%> €</td>
-    </tr>
-  <% end %>
-</table>
+    <% @products.each do |product| %>
 
+      <div class="col-md-4 col-xs-6">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h2 class="panel-title"><%= link_to product.name.capitalize, product_path(product) %> <span class="pull-right"><%=product.price%> €</span></h2>
+          </div>
+            <div class="panel-body">
+              <p><%= product.description%></p>
+              <button type="button" class="btn btn-success pull-right">Buy it</button>
+            </div>
+        </div>
+      </div>
 
+    <% end %>
+
+</div>
