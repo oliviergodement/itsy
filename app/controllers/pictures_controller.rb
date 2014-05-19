@@ -15,14 +15,18 @@ class PicturesController < ApplicationController
   end
 
   def show
+    @picture = Picture.new(picture_params)
   end
 
+  def index
+    @pictures = Picture.all
+  end
   def destroy
   end
 
 private
 
   def picture_params
-    params.require(:picture).permit(:alt, :picture_url, :s3picture)
+    params.require(:picture).permit(:id, :alt, :picture_url, :s3picture)
   end
 end

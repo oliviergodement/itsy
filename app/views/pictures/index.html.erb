@@ -1,0 +1,9 @@
+<h1>Pictures index</h1>
+  Pictures arrray is <%= @pictures.size %> long.
+  <strong>Why?!</strong>
+  <% @pictures.each do |picture| %>
+    <div>
+      <%= image_tag picture.s3picture.url(:thumb) %>
+    </div>
+  <% end %>
+

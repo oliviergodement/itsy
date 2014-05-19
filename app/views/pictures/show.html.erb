@@ -1,4 +1,4 @@
-<h1>Pictures#show</h1>
-<p>Find me in app/views/pictures/show.html.erb</p>
-
 <%= image_tag @picture.picture.url(:medium) %>
+
+<%= link_to "Delete image", picture_path(@picture), method: :delete %>
+<%= link_to "Change image", edit_picture_path(@picture) %>
