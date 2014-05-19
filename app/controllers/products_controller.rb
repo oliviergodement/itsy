@@ -20,5 +20,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    Product.find(params[:id]).destroy
   end
 end
