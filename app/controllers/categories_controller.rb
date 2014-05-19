@@ -27,6 +27,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    Category.find(params[:id]).destroy
   end
 
   private
