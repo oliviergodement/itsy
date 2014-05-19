@@ -4,7 +4,7 @@
   <% @categories.each do |category| %>
 
     <% if(@categories.first == category || @categories[6] == category) %>
-      <div class="col-md-8 col-xs-6">
+      <div class="col-md-8 col-sm-6">
       <div class="panel panel-info">
         <div class="panel-heading">
           <h2 class="panel-title"><%= link_to category.name.capitalize, category_path(category) %><span class="glyphicon glyphicon-chevron-right pull-right"></span></h2>
@@ -15,7 +15,7 @@
       </div>
     </div>
     <% elsif %>
-      <div class="col-md-4 col-xs-6">
+      <div class="col-md-4 col-sm-6">
         <div class="panel panel-info">
           <div class="panel-heading">
             <h2 class="panel-title"><%= link_to category.name.capitalize, category_path(category) %><span class="glyphicon glyphicon-chevron-right pull-right"></span></h2>
