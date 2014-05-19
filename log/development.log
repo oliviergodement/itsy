@@ -1,0 +1,115 @@
+  [1m[36m (19.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (6.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateCategories (20140519092821)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (25.5ms)[0m  [1mCREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (6.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140519092821"]]
+  [1m[36m (6.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateProducts (20140519093023)
+  [1m[35m (5.6ms)[0m  BEGIN
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "products" ("id" serial primary key, "name" character varying(255), "price" float, "localization" character varying(255), "description" text, "quantity" integer, "category_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (0.8ms)[0m  CREATE  INDEX  "index_products_on_category_id" ON "products"  ("category_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140519093023"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Migrating to CreatePictures (20140519093048)
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.1ms)[0m  CREATE TABLE "pictures" ("id" serial primary key, "picture_url" character varying(255), "alt" character varying(255), "product_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX  "index_pictures_on_product_id" ON "pictures"  ("product_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140519093048"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mCategory Load (0.5ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  [1m[35mCategory Load (0.4ms)[0m  SELECT "categories".* FROM "categories"
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (6.7ms)[0m  [1mINSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", "2014-05-19 09:37:54.056729"], ["name", "chemises"], ["updated_at", "2014-05-19 09:37:54.056729"]]
+  [1m[35m (5.9ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "categories" ("created_at", "name", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", "2014-05-19 09:38:14.601442"], ["name", "robes"], ["updated_at", "2014-05-19 09:38:14.601442"]]
+  [1m[36m (8.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mCategory Load (0.4ms)[0m  SELECT "categories".* FROM "categories"
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (11.2ms)[0m  [1mINSERT INTO "products" ("category_id", "created_at", "description", "localization", "name", "price", "quantity", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["category_id", 2], ["created_at", "2014-05-19 09:39:21.482708"], ["description", "une belle robe bleue"], ["localization", "Paris"], ["name", "robe bleue"], ["price", 14.5], ["quantity", 10], ["updated_at", "2014-05-19 09:39:21.482708"]]
+  [1m[35m (5.0ms)[0m  COMMIT
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.3ms)[0m  SELECT "products".* FROM "products"  WHERE "products"."category_id" = $1  [["category_id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.4ms)[0m  SELECT "products".* FROM "products"  WHERE "products"."category_id" = $1  [["category_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "pictures" ("alt", "created_at", "picture_url", "product_id", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["alt", "photo de la robe bleue"], ["created_at", "2014-05-19 09:40:48.707017"], ["picture_url", "www.google.fr/img.png"], ["product_id", 1], ["updated_at", "2014-05-19 09:40:48.707017"]]
+  [1m[36m (7.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mCategory Load (0.4ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[35mCategory Load (0.6ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[35mCategory Load (0.4ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[35mCategory Load (0.4ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.3ms)[0m  SELECT "products".* FROM "products"  WHERE "products"."category_id" = $1  [["category_id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[35mCategory Load (0.5ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT  "products".* FROM "products"  WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT 1[0m  [["category_id", 2], ["id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT  "products".* FROM "products"  WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT 1[0m  [["category_id", 2], ["id", 1]]
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"  WHERE "pictures"."product_id" = $1  [["product_id", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.4ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.2ms)[0m  SELECT "products".* FROM "products"  WHERE "products"."category_id" = $1  [["category_id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.4ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[35mCategory Load (0.4ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.3ms)[0m  SELECT "products".* FROM "products"  WHERE "products"."category_id" = $1  [["category_id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.4ms)[0m  SELECT  "products".* FROM "products"  WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT 1  [["category_id", 2], ["id", 1]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.4ms)[0m  SELECT  "products".* FROM "products"  WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT 1  [["category_id", 2], ["id", 1]]
+  [1m[36mPicture Load (0.3ms)[0m  [1mSELECT "pictures".* FROM "pictures"  WHERE "pictures"."product_id" = $1[0m  [["product_id", 1]]
+  [1m[35mCategory Load (0.4ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[35mProduct Load (0.4ms)[0m  SELECT "products".* FROM "products"
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.4ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.3ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mProduct Load (0.3ms)[0m  SELECT "products".* FROM "products"  WHERE "products"."category_id" = $1  [["category_id", 2]]
+  [1m[36mCategory Load (0.4ms)[0m  [1mSELECT "categories".* FROM "categories"[0m
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 1]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT "products".* FROM "products"  WHERE "products"."category_id" = $1[0m  [["category_id", 2]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT  "products".* FROM "products"  WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT 1[0m  [["category_id", 2], ["id", 1]]
+  [1m[35mCategory Load (0.2ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT  "products".* FROM "products"  WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT 1[0m  [["category_id", 2], ["id", 1]]
+  [1m[35mCategory Load (0.3ms)[0m  SELECT  "categories".* FROM "categories"  WHERE "categories"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT  "products".* FROM "products"  WHERE "products"."category_id" = $1 AND "products"."id" = $2 LIMIT 1[0m  [["category_id", 2], ["id", 1]]
+  [1m[35mProduct Load (0.2ms)[0m  SELECT  "products".* FROM "products"  WHERE "products"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT  "products".* FROM "products"  WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"  WHERE "pictures"."product_id" = $1  [["product_id", 1]]
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT  "products".* FROM "products"  WHERE "products"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mPicture Load (0.3ms)[0m  SELECT "pictures".* FROM "pictures"  WHERE "pictures"."product_id" = $1  [["product_id", 1]]
