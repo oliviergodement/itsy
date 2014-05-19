@@ -1,5 +1,11 @@
 source 'https://rubygems.org'
 
+
+# Paperclip is intended as an easy file attachment library for Active Record.
+gem 'paperclip', github: 'thoughtbot/paperclip'
+# Amazon web services SDK to interact with S3 Amazon DB
+gem 'aws-sdk'
+# Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
 gem 'figaro'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
