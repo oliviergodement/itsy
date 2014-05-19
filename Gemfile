@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
+ruby '2.1.1'
 
+# these are for heroku
+gem 'thin'
+gem 'rails_12factor', group: :production
 
 # Paperclip is intended as an easy file attachment library for Active Record.
 gem 'paperclip', github: 'thoughtbot/paperclip'

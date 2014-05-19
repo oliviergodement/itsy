@@ -8,7 +8,7 @@ defaults = {
    url: ':s3_domain_url',
    path: '/:rails_env/:class/:attachment/:id_partition/:style/:filename'
 }
-!
+
  defaults.each do |key, value|
    Paperclip::Attachment.default_options[key] = value
 end
