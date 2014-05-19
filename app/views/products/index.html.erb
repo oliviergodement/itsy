@@ -1,2 +1,22 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<h1>Products index</h1>
+<table>
+   <thead>
+  <tr>
+     <th>Product name</th>
+     <th>Price</th>
+     <th>Localization</th>
+     <th>Quantity left</th>
+     <th>Description</th>
+  </tr>
+ </thead>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= image_tag product.pictures.first.picture_url, size: "200x300", alt: product.pictures.first.alt%></td>
+      <td><%= link_to(product.name, product_path(product))%></td>
+      <td><%= product.price %></td>
+      <td><%= product.localization %></td>
+      <td><%= product.quantity %></td>
+      <td><%= truncate(product.description, length: 30) %></td>
+    </tr>
+  <% end %>
+</table>

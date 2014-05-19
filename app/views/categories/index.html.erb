@@ -1,2 +1,15 @@
-<h1>Categories#index</h1>
-<p>Find me in app/views/categories/index.html.erb</p>
+<h1>Categories index</h1>
+<table>
+   <thead>
+  <tr>
+     <th>Category</th>
+     <th>Products</th>
+  </tr>
+ </thead>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.name %></td>
+      <td><%= link_to(category.products.length.to_s + " products", category_path(category))%></td>
+    </tr>
+  <% end %>
+</table>
