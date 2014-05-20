@@ -10,6 +10,9 @@
           <div class="pull-right">
             <p class="links"><nobr><%= link_to "View our Categories ", categories_path %> or <%= link_to  "Add a new Product", products_path %></nobr></p>
           </div>
+          <div class="pull-left">
+             <p>  We currently have <%= pluralize(User.all.size, 'user')%> selling <%= pluralize(Product.all.size, 'amazing product')%> !</p>
+          </div>
 
     </div>
   </div>
