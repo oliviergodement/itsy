@@ -1,31 +1,30 @@
-<h1><%= @product.name %></h1>
-<br>
-<% @product.pictures.each do |picture| %>
-<%= image_tag picture.picture_url, size: "200x300", alt: picture.alt %>
-<% end %>
-<div>
-  Price : <% if product.price % 1 == 0 %>
-                <%= product.price.to_i %>
-              <% else %>
-                <%= product.price %>
-              <% end %> €
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-7">
+      Picture
+      <% @product.pictures.each do |picture| %>
+        <%= image_tag picture.picture_url, size: "200x300", alt: picture.alt %>
+      <% end %>
+    </div>
+    <div class="col-sm-5 infoswrapper">
+      <h2><%= @product.name %></h2>
+      <p>Price : <%= @product.price %> €</p>
+      <p>Localization : <%= @product.localization %></p>
+      <p>Added on <%= @product.created_at.to_date %></p>
+      <p>Description :<%= @product.description %></p>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div>
+      <%= link_to "Back to products list", category_path(@product.category) %>
+    </div>
+    <div>
+      <%= link_to "Edit product", edit_product_path(@product) %>
+    </div>
+  </div>
+
 </div>
-<div>
-  Localization : <%= @product.localization %>
-</div>
-<div>
-  Quantity : <%= @product.quantity %> left.
-</div>
-<div>
-  Added on <%= @product.created_at.to_date %>
-</div>
-<div>
-  Description :<%= @product.description %>
-</div>
-<br>
-<div>
-<%= link_to "Back to products list", category_path(@product.category) %>
-</div>
-<div>
-<%= link_to "Edit product", edit_product_path(@product) %>
-</div>
+
