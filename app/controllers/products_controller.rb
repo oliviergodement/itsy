@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
+
   def index
     @products = Product.all
   end
@@ -34,7 +38,7 @@ class ProductsController < ApplicationController
   private
 
   def set_params
-    params.require(:product).permit(:name, :category_id, :description, :localization, :quantity, :price)
+    params.require(:product).permit(:user_id, :name, :category_id, :description, :localization, :quantity, :price)
   end
 
 end
