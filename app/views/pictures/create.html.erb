@@ -1,2 +1,4 @@
-<h1>Pictures#create</h1>
-<p>now check if picture is in the S3 bucket</p>
+<h1>Your picture has been successfully uploaded</h1>
+<div>
+  <%= image_tag @picture.s3picture.url(:medium) %>
+</div>
