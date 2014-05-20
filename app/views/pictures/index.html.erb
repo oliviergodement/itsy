@@ -1,9 +1,15 @@
 <h1>Pictures index</h1>
-  Pictures arrray is <%= @pictures.size %> long.
+  Pictures array is <%= @pictures.size %> long.
   <strong>Why?!</strong>
   <% @pictures.each do |picture| %>
+      <div>
+      <%= picture.id %>
+    </div>
     <div>
-      <%= image_tag picture.s3picture.url(:thumb) %>
+      <%= image_tag picture.s3picture.url(:medium) %>
+    </div>
+    <div>
+      <%= link_to 'Delete', picture_path(picture), method: :delete %>
     </div>
   <% end %>
 
