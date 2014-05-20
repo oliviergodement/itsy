@@ -1,6 +1,21 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
+  get 'users/new'
+
+  get 'users/create'
+
+  get 'users/edit'
+
+  get 'users/update'
+
+  get 'users/destroy'
+
+  get 'users/show'
+
   devise_for :users
+  resources :users
   root 'welcome#index'
   resources :categories
   resources :products

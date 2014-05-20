@@ -10,7 +10,13 @@
       <div class="col-md-4 col-sm-6">
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h2 class="panel-title"><%= link_to product.name.capitalize, product_path(product) %> <span class="pull-right"><%=product.price%> €</span></h2>
+            <h2 class="panel-title"><%= link_to product.name.capitalize, product_path(product) %> <span class="pull-right">
+              <% if product.price % 1 == 0 %>
+                <%= product.price.to_i %>
+              <% else %>
+                <%= product.price %>
+              <% end %>
+               €</span></h2>
           </div>
             <div class="panel-body">
               <p><%= product.description%></p>

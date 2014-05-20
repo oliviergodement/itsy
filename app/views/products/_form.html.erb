@@ -11,6 +11,7 @@
   <div><%= f.text_field :localization %></div>
   <div><%= f.label :description %></div>
   <div><%= f.text_area :description %></div>
+  <div><%= f.hidden_field :user_id, value: current_user.id %></div>
   <%= f.fields_for :pictures, @product.pictures.build do |picture_f| %>
     <%= picture_f.hidden_field :product_id, value: @product.id %>
     <%= picture_f.label :s3picture %><br>
