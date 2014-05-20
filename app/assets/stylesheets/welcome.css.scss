@@ -28,10 +28,39 @@
 
 }
 
-
 .welcometext{
   z-index: 1;
   background-color: white;
   background:rgba(255,255,255,0.3);
 }
+
+.container.credit {
+margin: 20px 0;
+}
+
+.muted {
+color: #999999;
+}
+
+p {
+margin: 0 0 10px;
+}
+
+user agent stylesheetp {
+display: block;
+-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+}
+
+#footer{
+z-index: 1;
+position:fixed;
+bottom:0;
+left:0;
+height: 30px;
+}
+
+
 
