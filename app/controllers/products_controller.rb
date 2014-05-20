@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-
+  respond_to :js, :html
 
   def index
     @products = Product.all
@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(set_params)
+    @product.pictures.create(picture_params)
     redirect_to product_path(@product)
   end
 
@@ -23,8 +24,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.update(params[:id], set_params)
-    redirect_to product_path(@product)
+    @product = Product.find(params[:id])
+    @product.update(set_params)
+    @product.pictures.create(picture_params)
+
+    respond_with do |format|
+      format.js
+      format.html { redirect_to product_path(@product) }
+    end
   end
 
   def show
@@ -38,7 +45,11 @@ class ProductsController < ApplicationController
   private
 
   def set_params
-    params.require(:product).permit(:name, :category_id, :description, :localization, :quantity, :price, pictures_attributes: [:s3picture])
+    params.require(:product).permit(:name, :category_id, :description, :localization, :quantity, :price)
+  end
+
+  def picture_params
+    params.require(:product).permit(:s3picture)
   end
 
 end

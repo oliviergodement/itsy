@@ -8,7 +8,7 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 # Amazon web services SDK to interact with S3 Amazon DB
 gem 'aws-sdk'
 # Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file
-gem 'figaro'
+gem 'figaro', '1.0.0.rc1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 # Use postgresql as the database for Active Record
@@ -36,6 +36,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 gem 'devise'
+gem 'remotipart', '~> 1.2'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

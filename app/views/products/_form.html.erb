@@ -1,4 +1,4 @@
-<%= form_for @product, :html => { :multipart => true } do |f| %>
+<%= form_for @product, :html => { :multipart => true }, :remote => true do |f| %>
   <div><%= f.label :name %></div>
   <div><%= f.text_field :name %></div>
   <div><%= f.label :category_id %></div>
@@ -12,12 +12,9 @@
   <div><%= f.label :description %></div>
   <div><%= f.text_area :description %></div>
   <div><%= f.hidden_field :user_id, value: current_user.id %></div>
-  <%= f.fields_for :pictures, @product.pictures.build do |picture_f| %>
-    <%= picture_f.hidden_field :product_id, value: @product.id %>
-    <%= picture_f.label :s3picture %><br>
-    <%= picture_f.file_field :s3picture %>
-  <% end %>
-  <div class="actions">
-    <%= f.submit %>
+  <div id="pictures-container">
+    <%= render 'pictures' %>
   </div>
+  <div><%= f.file_field :s3picture, class: "upload" %></div>
+  <div><%= f.submit %></div>
 <% end %>
