@@ -1,0 +1,6 @@
+  <% @product.pictures.each do |picture| %>
+    <fieldset>
+      <%= image_tag picture.s3picture.url(:medium) %>
+      <%= link_to "Delete", picture_path(picture), class: 'delete-picture', method: :delete, remote: true %>
+    </fieldset>
+  <% end %>
