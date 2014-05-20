@@ -14,7 +14,7 @@
         </div>
         <div class="panel-body">
           <% category.products.each do |product| %>
-            <%= image_tag product.pictures.first.s3picture.url(:medium) %>
+            <%= link_to((image_tag product.pictures.first.s3picture.url(:medium)), product_path(product)) %>
           <% end %>
           <div class="text-right"><%= link_to(category.products.length.to_s + " products", category_path(category))%></div>
         </div>
