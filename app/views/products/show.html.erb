@@ -8,10 +8,16 @@
     </div>
     <div class="col-sm-5 infoswrapper">
       <h2><%= @product.name %></h2>
-      <p>Price : <%= @product.price %> €</p>
+      <p>Price :
+        <% if @product.price % 1 == 0 %>
+          <%= @product.price.to_i %>
+        <% else %>
+          <%= @product.price %>
+        <% end %> €
+      </p>
       <p>Localization : <%= @product.localization %></p>
       <p>Added on <%= @product.created_at.to_date %></p>
-      <p>Description :<%= @product.description %></p>
+      <p>Description : <%= @product.description %></p>
     </div>
   </div>
 
