@@ -1,1 +1,0 @@
-<p>The product has been deleted</p>
