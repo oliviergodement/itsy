@@ -4,7 +4,11 @@
 <%= image_tag picture.picture_url, size: "200x300", alt: picture.alt %>
 <% end %>
 <div>
-  Price : <%= @product.price %> €
+  Price : <% if product.price % 1 == 0 %>
+                <%= product.price.to_i %>
+              <% else %>
+                <%= product.price %>
+              <% end %> €
 </div>
 <div>
   Localization : <%= @product.localization %>
