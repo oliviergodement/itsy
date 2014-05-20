@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-
+ruby '2.1.1'
+gem 'thin'
+gem 'rails_12factor', group: :production
 # Paperclip is intended as an easy file attachment library for Active Record.
 gem 'paperclip', github: 'thoughtbot/paperclip'
 # Amazon web services SDK to interact with S3 Amazon DB
