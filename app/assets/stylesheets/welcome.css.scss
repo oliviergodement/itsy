@@ -9,7 +9,12 @@
   top: 0;
   left: 0;
   background-color: white;
-  background-image: url(http://www.autourdupuydufou.com/media/Sedivertir/Art_culture/sculpteur_bois.jpg);
+  background-image: url(http://www.maisondequartierlesmoulins.fr/uploads/images/actualites/bourse.jpg  );
+
+  background-repeat : no-repeat;
+  background-size: cover;
+  background-attachment:fixed;
+  background-color : white;
   width: 100%;
   height: 100%;
 }
@@ -18,7 +23,15 @@
   z-index: 1;
 }
 
-.row {
-  top: 100px;
+.welcome {
+  margin-top: 300px;
 
 }
+
+
+.welcometext{
+  z-index: 1;
+  background-color: white;
+  background:rgba(255,255,255,0.3);
+}
+
