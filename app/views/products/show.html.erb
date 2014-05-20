@@ -2,9 +2,10 @@
 
   <div class="row">
     <div class="col-sm-7">
-      Picture
+      <%= @product.pictures.size %>
       <% @product.pictures.each do |picture| %>
-        <%= image_tag picture.picture_url, size: "200x300", alt: picture.alt %>
+        <%= image_tag picture.s3picture.url(:medium) %>
+        <%= picture.id %>
       <% end %>
     </div>
     <div class="col-sm-5 infoswrapper">
