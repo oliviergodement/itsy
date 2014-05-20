@@ -32,7 +32,10 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    Product.find(params[:id]).destroy
+    product = Product.find(params[:id])
+    flash[:info] = "you have deleted #{product.name}"
+    product.destroy
+    redirect_to categories_path
   end
 
   private

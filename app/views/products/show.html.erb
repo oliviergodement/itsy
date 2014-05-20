@@ -22,6 +22,10 @@
     <div>
       <%= link_to "Edit product", edit_product_path(@product) %>
     </div>
+    <div>
+      <%= link_to "Delete product", product_path(@product), method: :delete %>
+    </div>
+
   </div>
 
 </div>
