@@ -10,6 +10,9 @@
           <h2 class="panel-title"><%= link_to category.name.capitalize, category_path(category) %><span class="glyphicon glyphicon-chevron-right pull-right"></span></h2>
         </div>
         <div class="panel-body">
+          <% category.products.each do |product| %>
+            <%= image_tag product.pictures.first.s3picture.url(:medium) %>
+          <% end %>
           <div class="text-right"><%= link_to(category.products.length.to_s + " products", category_path(category))%></div>
         </div>
       </div>
