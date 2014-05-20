@@ -2,7 +2,6 @@
 
   <div class="row">
     <div class="col-sm-7">
-      <%= @product.pictures.size %>
       <% @product.pictures.each do |picture| %>
         <%= image_tag picture.s3picture.url(:medium) %>
         <%= picture.id %>
@@ -15,7 +14,6 @@
       <p>Added on <%= @product.created_at.to_date %></p>
       <p>Description :<%= @product.description %></p>
     </div>
-
   </div>
 
   <div class="row">
