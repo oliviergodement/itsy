@@ -16,4 +16,8 @@ class ProductPolicy < Struct.new(:user, :product)
     def destroy?
       user.admin?
     end
+
+    def new?
+      user.id?
+    end
 end
