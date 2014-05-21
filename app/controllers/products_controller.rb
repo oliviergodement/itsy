@@ -15,7 +15,10 @@ class ProductsController < ApplicationController
   def create
     @product = Product.create(set_params)
     @product.pictures.create(picture_params)
-    redirect_to product_path(@product)
+    respond_with do |format|
+      format.js
+      format.html { redirect_to product_path(@product) }
+    end
   end
 
   def edit
