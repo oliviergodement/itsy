@@ -22,12 +22,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><%= link_to 'Our categories', categories_path%></li>
+            <li><%= link_to 'Our categories', categories_path%></li>
             <li><%= link_to 'Sell your Product', new_product_path%></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <li><a href=""><%= current_user.email %></a></li>
+              <li><%= link_to current_user.email, user_path(current_user) %></li>
               <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%=link_to 'Login', user_session_path%></li>

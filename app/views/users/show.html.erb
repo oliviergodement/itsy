@@ -7,10 +7,15 @@
     <p>Email adress: <%= @user.email %></p>
     <p>Account created on <%= @user.created_at %></p>
     <p>Last sign on <%= @user.last_sign_in_at %></p>
+    <% if @user.admin %>
+      <p>You are an <strong>admin</strong></p>
+    <% else %>
+      <p>You are a regular user</p>
+    <% end %>
   </div>
 
   <div class="row">
-    <h3>Products added by <%= @user.name %></h3>
+    <h3>Yours products</h3>
   </div>
   <% @user.products.each do |product| %>
     <div class="row">
