@@ -10,7 +10,7 @@ class ProductPolicy < Struct.new(:user, :product)
     end
 
     def update?
-      product.user_id == user.id
+      (product.user_id == user.id) || user.admin?
     end
 
     def destroy?
