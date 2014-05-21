@@ -2,9 +2,7 @@
   <%= flash[:info] %>
 </div>
 <br>
-
 <div class="container">
-
   <% @categories.each do |category| %>
 
     <% if(@categories.first == category || @categories[6] == category) %>
@@ -14,11 +12,11 @@
           <h2 class="panel-title"><%= link_to category.name.capitalize, category_path(category) %><span class="glyphicon glyphicon-chevron-right pull-right"></span></h2>
         </div>
           <div class="panel-body">
-            <% category.products.each do |product| %>
-              <% if product.pictures.size > 0 %>
-                <%= link_to((image_tag product.pictures.first.s3picture.url(:medium)), product_path(product)) %>
-                <% end %>
+            <% unless category.products.first == nil %>
+              <% if category.products.first.pictures.size > 0 %>
+                <%= link_to((image_tag category.products.first.pictures.first.s3picture.url(:medium)), product_path(category.products.first)) %>
               <% end %>
+            <% end %>
             <div class="text-right"><%= link_to(category.products.length.to_s + " products", category_path(category))%></div>
           </div>
       </div>
