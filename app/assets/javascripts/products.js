@@ -4,7 +4,7 @@ $(function() {
   })
 
   $('body').on('change', '.upload', function(){
-    $(this).parents('form').submit();
+    $('form').submit();
   });
 
 });
