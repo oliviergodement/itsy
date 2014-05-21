@@ -28,10 +28,14 @@
       <%= link_to "Back to products list", category_path(@product.category) %>
     </div>
     <div>
-      <%= link_to "Edit product", edit_product_path(@product) %>
+      <% if policy(@product).update? %>
+        <%= link_to "Edit product", edit_product_path(@product) %>
+      <% end %>
     </div>
     <div>
-      <%= link_to "Delete product", product_path(@product), method: :delete %>
+      <% if policy(@product).destroy? %>
+        <%= link_to "Delete product", product_path(@product), method: :delete %>
+      <% end %>
     </div>
 
   </div>

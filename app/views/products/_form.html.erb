@@ -1,3 +1,4 @@
+
   <%= form_for @product, :html => { :multipart => true }, :remote => true do |f| %>
     <div class="form-group">
       <div><%= f.label :name %></div>
@@ -27,7 +28,7 @@
     <div id="pictures-container">
       <%= render 'pictures' %>
     </div>
-    <div><%= f.file_field :s3picture, required: true, class: "upload" %></div>
+    <div><%= f.file_field :s3picture, class: "upload" %></div>
     <div><%= f.submit class: "btn btn-primary" %></div>
   <% end %>
 
