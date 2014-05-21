@@ -11,7 +11,9 @@
  </thead>
   <% @products.each do |product| %>
     <tr>
-      <td><%= image_tag product.pictures.first.s3picture_url, size: "200x300", alt: product.pictures.first.alt%></td>
+      <% if product.pictures.size > 0 %>
+        <td><%= image_tag product.pictures.first.s3picture_url, size: "200x300", alt: product.pictures.first.alt%></td>
+      <% end %>
       <td><%= link_to(product.name, product_path(product))%></td>
       <td><% if product.price % 1 == 0 %>
                 <%= product.price.to_i %>

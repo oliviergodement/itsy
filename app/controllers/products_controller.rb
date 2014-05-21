@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create(set_params)
+    @product = Product.find_or_create_by(set_params)
     @product.pictures.create(picture_params)
     respond_with do |format|
       format.js
