@@ -20,4 +20,4 @@
 /config/application.yml
 
 # Ignore secrets!
-/config/secrets.ym
+/config/secrets.yml
