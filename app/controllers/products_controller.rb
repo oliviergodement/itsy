@@ -13,12 +13,13 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.find_or_create_by(set_params)
-    @product.pictures.create(picture_params)
-    respond_with do |format|
-      format.js
-      format.html { redirect_to product_path(@product) }
-    end
+    product = Product.create(set_params)
+    redirect_to edit_prout_path
+  end
+
+  def edit_caca
+
+    # @product = Product.find(params[:id])
   end
 
   def edit
@@ -29,12 +30,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.update(set_params)
-    @product.pictures.create(picture_params)
-
-    respond_with do |format|
-      format.js
-      format.html { redirect_to product_path(@product) }
-    end
+    redirect_to product_path(@product)
   end
 
   def show

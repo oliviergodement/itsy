@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :products
   resources :pictures
 
+  get 'edit_pictures/edit_pipi' => 'products#edit_caca', as: 'edit_prout'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
