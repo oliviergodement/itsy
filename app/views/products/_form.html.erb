@@ -1,20 +1,20 @@
 <%= form_for @product, :html => { :multipart => true }, :remote => true do |f| %>
   <div><%= f.label :name %></div>
-  <div><%= f.text_field :name %></div>
+  <div><%= f.text_field :name, required: true %></div>
   <div><%= f.label :category_id %></div>
   <div><%= f.select(:category_id, options_for_select(@categories)) %></div>
   <div><%= f.label :price %></div>
-  <div><%= f.text_field :price %></div>
+  <div><%= f.number_field :price, required: true %> €</div>
   <div><%= f.label :quantity %></div>
-  <div><%= f.text_area :quantity %></div>
+  <div><%= f.number_field :quantity, required: true %></div>
   <div><%= f.label :localization %></div>
-  <div><%= f.text_field :localization %></div>
+  <div><%= f.text_field :localization, required: true %></div>
   <div><%= f.label :description %></div>
-  <div><%= f.text_area :description %></div>
+  <div><%= f.text_area :description, required: true, placeholder: 'A short description of your product' %></div>
   <div><%= f.hidden_field :user_id, value: current_user.id %></div>
   <div id="pictures-container">
     <%= render 'pictures' %>
   </div>
-  <div><%= f.file_field :s3picture, class: "upload" %></div>
+  <div><%= f.file_field :s3picture, required: true, class: "upload" %></div>
   <div><%= f.submit %></div>
 <% end %>
