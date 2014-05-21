@@ -17,14 +17,16 @@ class ProductsController < ApplicationController
     redirect_to edit_prout_path(product)
   end
 
-  def edit_caca
+  def edit_pictures
     @product = Product.find(params[:id])
   end
 
-  def yes_caca
+  def create_picture
     # @product = Product.find(params[:id])
     # @product.update(set_params)
     # redirect_to product_path(@product)
+    @product = Product.find(params[:id])
+    @product.pictures.create(picture_params)
   end
 
   def edit

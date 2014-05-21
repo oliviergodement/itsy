@@ -1,4 +1,6 @@
-<%= form_for @product, :html => { :multipart => true }, :remote => true do |f| %>
+
+
+<%= form_for @product, :url => { :controller => "products", :action => "create_picture" }, :html => { :multipart => true }, :remote => true do |f| %>
   <div><%= @product.name %></div>
   <div><%= @product.pictures.size %></div>
   <div id="pictures-container">
