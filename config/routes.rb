@@ -5,8 +5,28 @@ Rails.application.routes.draw do
   resources :users
   root 'welcome#index'
   resources :categories
-  resources :products
+  resources :products do
+    member do
+      get 'edit_pictures'
+      patch 'create_picture'
+    end
+  end
   resources :pictures
+
+# resources :products do
+#   member do
+#     get 'edit_pictures'
+#     patch 'create_picture'
+#   end
+# end
+
+# yields
+
+# get 'products/:id/edit_pictures' => 'products#edit_pictures', as: 'edit_pictures_product_path'
+# patch 'products/:id/edit_pictures' => 'products#create_picture'
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
