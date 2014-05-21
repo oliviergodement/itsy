@@ -1,34 +1,42 @@
 <div class="container">
 
   <div class="row">
-    <h2>Details for <%= @user.name %></h2>
-  </div>
-  <div class="row">
-    <p>Email adress: <%= @user.email %></p>
-    <p>Account created on <%= @user.created_at %></p>
-    <p>Last sign on <%= @user.last_sign_in_at %></p>
-    <% if @user.admin %>
-      <p>You are an <strong>admin</strong></p>
-    <% else %>
-      <p>You are a regular user</p>
-    <% end %>
-  </div>
 
-  <div class="row">
-    <h3>Yours products</h3>
-  </div>
-  <% @user.products.each do |product| %>
-    <div class="row">
-      <div class="col-xs-2">
-        <%= link_to product.name, product_path(product) %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title"><%= @user.name %>
+          <% if @user.admin %>
+            (Admin)
+          <% else %>
+            (Regular user)
+          <% end %>
+        </h2>
       </div>
-      <div class="col-xs-2">
-        <%= product.price %>
-      </div>
-      <div class="col-xs-4">
-        <%= product.description %>
+      <div class="panel-body">
+          <p>Email adress: <%= @user.email %></p>
+          <p>Account created on <%= @user.created_at %></p>
+          <p>Last sign on <%= @user.last_sign_in_at %></p>
       </div>
     </div>
+  <% if @user.products.size > 0 %>
+    <h3>Your products:</h3>
+    <table class="table table-hover">
+      <th>Name</th>
+      <th>Price</th>
+      <th>Description</th>
+    <% @user.products.each do |product| %>
+      <tr>
+        <td>
+          <%= link_to product.name, product_path(product) %>
+        </td>
+        <td>
+          <%= product.price %>
+        </td>
+        <td>
+          <%= product.description %>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
 
 </div>
