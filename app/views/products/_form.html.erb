@@ -1,30 +1,30 @@
+<div class="form-container col-sm-12">
   <%= form_for @product do |f| %>
-    <div class="form-group">
-      <div><%= f.label :name %></div>
+    <div class="form-group form-name">
+      <div><%= f.label :name, "Name of your product" %></div>
       <div><%= f.text_field :name, required: true, class: "form-control" %></div>
     </div>
-    <div class="form-group">
+    <div class="form-group form-category">
       <div><%= f.label :category_id %></div>
       <div><%= f.select(:category_id, options_for_select(@categories), {}, {class: "form-control"}) %></div>
     </div>
-    <div class="form-group">
+    <div class="form-group form-price">
       <div><%= f.label :price %></div>
-      <div><%= f.number_field :price, required: true, class: "form-control" %> €</div>
+      <div id="price-input"><%= f.number_field :price, required: true, class: "form-control", placeholder: "€" %></div>
     </div>
     <div class="form-group">
-      <div><%= f.label :quantity %></div>
-      <div><%= f.number_field :quantity, required: true, class: "form-control" %></div>
+      <div><%= f.label :quantity, "How many products can you sell ?" %></div>
+      <div class="form-quantity"><%= f.number_field :quantity, required: true, class: "form-control" %></div>
     </div>
-    <div class="form-group">
-      <div><%= f.label :localization %></div>
+    <div class="form-group form-localization">
+      <div><%= f.label :localization, "Where are you from?" %></div>
       <div><%= f.text_field :localization, required: true, class: "form-control" %></div>
     </div>
     <div class="form-group">
-      <div><%= f.label :description %></div>
+      <div><%= f.label :description, "Describe briefly your product" %></div>
       <div><%= f.text_area(:description, required: true, cols: 50, rows: 10, class: "form-control") %></div>
     </div>
     <div><%= f.hidden_field :user_id, value: current_user.id %></div>
     <div><%= f.submit class: "btn btn-primary" %></div>
   <% end %>
-
-
+</div>

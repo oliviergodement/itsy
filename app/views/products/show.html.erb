@@ -1,15 +1,23 @@
 <div class="container">
 
+<div class="row">
+  <div class="col-sm4"><h1><%= @product.name.capitalize %></h1></div>
+  <div class="col-sm-4 pull-right text-right">
+    <%= link_to "Go back to the products list" , category_path(@product.category) %>
+  </div>
+</div>
+
   <div class="row">
-    <div class="col-sm-7">
+    <div class="col-sm-5">
       <% if @product.pictures.size > 0 %>
         <% @product.pictures.each do |picture| %>
           <%= image_tag picture.s3picture.url(:medium) %>
         <% end %>
       <% end %>
     </div>
-    <div class="col-sm-5 infoswrapper">
-      <h2><%= @product.name %></h2>
+    <div class="col-sm-7 infoswrapper">
+
+      <p>Added by <%= link_to User.find(@product.user_id).email, user_path(User.find(@product.user_id))%></p>
       <p>Price :
         <% if @product.price % 1 == 0 %>
           <%= @product.price.to_i %>
@@ -19,26 +27,18 @@
       </p>
       <p>Localization : <%= @product.localization %></p>
       <p>Added on <%= @product.created_at.to_date %></p>
-      <p>Description : <%= @product.description %></p>
+      <p>Description : <em><%= @product.description %></em></p>
+      <div>
+        <% if policy(@product).update? %>
+          <%= link_to "Edit product", edit_product_path(@product) %>
+        <% end %>
+      </div>
+      <div>
+        <% if policy(@product).destroy? %>
+          <%= link_to "Delete product", product_path(@product), method: :delete %>
+        <% end %>
+      </div>
     </div>
   </div>
-
-  <div class="row">
-    <div>
-      <%= link_to "Back to products list", category_path(@product.category) %>
-    </div>
-    <div>
-      <% if policy(@product).update? %>
-        <%= link_to "Edit product", edit_product_path(@product) %>
-      <% end %>
-    </div>
-    <div>
-      <% if policy(@product).destroy? %>
-        <%= link_to "Delete product", product_path(@product), method: :delete %>
-      <% end %>
-    </div>
-
-  </div>
-
 </div>
 

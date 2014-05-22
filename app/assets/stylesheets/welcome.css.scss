@@ -30,8 +30,8 @@
 
 .welcometext{
   z-index: 1;
-  background-color: white;
-  background:rgba(255,255,255,0.3);
+  background-color: lightgray;
+  background:rgba(255,255,255,0.9);
 }
 
 .container.credit {
@@ -44,14 +44,6 @@ color: #999999;
 
 p {
 margin: 0 0 10px;
-}
-
-user agent stylesheetp {
-display: block;
--webkit-margin-before: 1em;
--webkit-margin-after: 1em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;
 }
 
 #footer{

@@ -1,10 +1,9 @@
+<h1>Please add pictures to <%=@product.name%></h1>
+
 <%= form_for @product, :url => { :controller => "products", :action => "create_picture" }, :html => { :multipart => true }, :remote => true do |f| %>
-  <div><%= @product.name %></div>
-  <div><%= @product.pictures.size %></div>
   <div id="pictures-container">
     <%= render 'pictures' %>
   </div>
   <div><%= f.file_field :s3picture, class: "upload" %></div>
   <br>
-  <%= link_to "Yep, all good, show me my product's page", product_path(@product) %>
 <% end %>
