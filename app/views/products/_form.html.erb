@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-
-  <%= form_for @product, :html => { :multipart => true }, :remote => true do |f| %>
-=======
   <%= form_for @product do |f| %>
->>>>>>> new_route
     <div class="form-group">
       <div><%= f.label :name %></div>
       <div><%= f.text_field :name, required: true, class: "form-control" %></div>
@@ -29,13 +24,6 @@
       <div><%= f.text_area(:description, required: true, cols: 50, rows: 10, class: "form-control") %></div>
     </div>
     <div><%= f.hidden_field :user_id, value: current_user.id %></div>
-<<<<<<< HEAD
-    <div id="pictures-container">
-      <%= render 'pictures' %>
-    </div>
-    <div><%= f.file_field :s3picture, class: "upload" %></div>
-=======
->>>>>>> new_route
     <div><%= f.submit class: "btn btn-primary" %></div>
   <% end %>
 

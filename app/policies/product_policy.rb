@@ -9,6 +9,10 @@ class ProductPolicy < Struct.new(:user, :product)
       true
     end
 
+    def create_picture?
+      true
+    end
+
     def update?
       (product.user_id == user.id) || user.admin?
     end
