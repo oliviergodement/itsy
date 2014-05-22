@@ -22,7 +22,7 @@
       <div class="col-md-4 col-sm-6">
         <div class="panel panel-info">
           <div class="panel-heading">
-            <h2 class="panel-title"><%= link_to category.name.capitalize, category_path(category) %><span class="glyphicon glyphicon-chevron-right pull-right"></span></h2>
+            <h2 class="panel-title"><%= link_to category.name.capitalize, category_path(category) %><a href=<%= category_path(category) %>><span class="glyphicon glyphicon-chevron-right pull-right"></span></a></h2>
           </div>
             <div class="panel-body">
               <div class="text-right"><%= link_to(category.products.length.to_s + " products", category_path(category))%></div>
