@@ -16,8 +16,9 @@
       <% end %>
     </div>
     <div class="col-sm-7 infoswrapper">
-
-      <p>Added by <%= link_to User.find(@product.user_id).email, user_path(User.find(@product.user_id))%></p>
+      <% unless @product.user_id == nil %>
+        <p>Added by <%= link_to User.find(@product.user_id).email, user_path(User.find(@product.user_id))%></p>
+      <% end %>
       <p>Price :
         <% if @product.price % 1 == 0 %>
           <%= @product.price.to_i %>
@@ -28,6 +29,7 @@
       <p>Localization : <%= @product.localization %></p>
       <p>Added on <%= @product.created_at.to_date %></p>
       <p>Description : <em><%= @product.description %></em></p>
+      <%= button_to "Add to cart", shopping_cart_path(:product_id => @product), :class => "btn btn-success", method: 'POST' %>
       <div>
         <% if policy(@product).update? %>
           <%= link_to "Edit product", edit_product_path(@product) %>

@@ -36,6 +36,7 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'remotipart', '~> 1.2'
 gem 'pundit'
+gem 'acts_as_shopping_cart', '~> 0.2.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
