@@ -14,11 +14,11 @@ class ProductPolicy < Struct.new(:user, :product)
     end
 
     def update?
-      (product.user_id == user.id) || user.admin?
+      user == nil ? false : ((product.user_id == user.id) || user.admin?)
     end
 
     def destroy?
-      user.admin?
+      user == nil ? false : user.admin?
     end
 
     def new?

@@ -13,6 +13,11 @@ class ShoppingCartsController < ApplicationController
   def show
   end
 
+  def destroy
+    @shopping_cart.shopping_cart_items.find(params[:product_id]).destroy
+    redirect_to shopping_cart_path
+  end
+
   private
 
   def extract_shopping_cart

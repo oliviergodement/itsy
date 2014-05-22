@@ -24,6 +24,7 @@
       <th>Name</th>
       <th>Price</th>
       <th>Description</th>
+      <th></th>
     <% @user.products.each do |product| %>
       <tr>
         <td>
@@ -34,6 +35,9 @@
         </td>
         <td>
           <%= product.description %>
+        </td>
+        <td>
+          <%= link_to 'Edit product', edit_product_path(product) %>
         </td>
       </tr>
     <% end %>
