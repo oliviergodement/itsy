@@ -17,19 +17,19 @@ class ProductsController < ApplicationController
     @product = Product.new(set_params)
     authorize @product
     @product.save
-    redirect_to edit_pictures_product_path(@product)
+    redirect_to add_pictures_product_path(@product)
   end
 
-  def edit_pictures
+  def add_pictures
     @product = Product.find(params[:id])
   end
 
   def create_picture
-
+    # @product = Product.find(params[:id])
+    # @product.update(set_params)
+    # redirect_to product_path(@product)
     @product = Product.find(params[:id])
-    authorize @product
     @product.pictures.create(picture_params)
-
   end
 
   def edit
@@ -62,6 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def picture_params
+    authorize @product
     params.require(:product).permit(:s3picture)
   end
 

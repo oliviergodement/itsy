@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :products do
     member do
-      get 'edit_pictures'
+      get 'add_pictures'
       patch 'create_picture'
     end
   end
@@ -15,15 +15,15 @@ Rails.application.routes.draw do
 
 # resources :products do
 #   member do
-#     get 'edit_pictures'
+#     get 'add_pictures'
 #     patch 'create_picture'
 #   end
 # end
 
 # yields
 
-# get 'products/:id/edit_pictures' => 'products#edit_pictures', as: 'edit_pictures_product_path'
-# patch 'products/:id/edit_pictures' => 'products#create_picture'
+# get 'products/:id/add_pictures' => 'products#add_pictures', as: 'add_pictures_product_path'
+# patch 'products/:id/add_pictures' => 'products#create_picture'
 
 
 

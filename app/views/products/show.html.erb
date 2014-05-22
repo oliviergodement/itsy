@@ -33,6 +33,11 @@
           <%= link_to "Edit product", edit_product_path(@product) %>
         <% end %>
       </div>
+       <div>
+        <% if policy(@product).update? %>
+          <%= link_to "Edit pictures", add_pictures_product_path(@product) %>
+        <% end %>
+      </div>
       <div>
         <% if policy(@product).destroy? %>
           <%= link_to "Delete product", product_path(@product), method: :delete %>
