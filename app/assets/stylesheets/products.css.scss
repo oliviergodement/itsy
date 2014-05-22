@@ -1,3 +1,32 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-container{
+  width: 60%;
+  margin-bottom: 50px;
+}
+
+.form-name {
+  width: 80%;
+}
+
+.form-category {
+  width: 35%;
+}
+
+.form-price {
+  width: 15%;
+}
+
+.form-quantity {
+  width: 15%;
+}
+
+.form-localization {
+  width: 50%
+}
+
+#price-input {
+  display: inline;
+}

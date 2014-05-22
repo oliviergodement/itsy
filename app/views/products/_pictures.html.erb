@@ -1,3 +1,13 @@
+    <h4><% if @product.pictures.size == 1 %>
+          There is one picture.
+        <% elsif @product.pictures.size == 0 %>
+          There is no picture yet.
+        <% else %>
+          There are <%= @product.pictures.size %> pictures.
+        <% end %>
+    <%= link_to "When you're done go discover your great product page.", product_path(@product) %>
+  </h4>
+
   <% @product.pictures.each do |picture| %>
     <fieldset>
       <%= image_tag picture.s3picture.url(:medium) %>
