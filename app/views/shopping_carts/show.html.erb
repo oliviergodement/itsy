@@ -45,7 +45,9 @@
     </div>
     </div>
   <% else %>
-    <h3>Your cart is empty.</h3>
-    <p> <%= button_to "Go on a shopping frenzy!", categories_path, method: :get, class: 'btn btn-info' %> </p>
+    <h3>Your cart is empty :(</h3>
+    <div class="shopping-frenzy">
+      <%= button_to "Why not go on a shopping frenzy?", categories_path, method: :get, class: 'btn btn-lg btn-info' %>
+    </div>
   <% end %>
 </div>
