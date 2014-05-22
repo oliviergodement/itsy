@@ -1,0 +1,28 @@
+<h3>Your cart</h3>
+
+  <% if @shopping_cart.shopping_cart_items.length > 0 %>
+    <table class="table table-hover">
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    <% total = 0 %>
+    <% @shopping_cart.shopping_cart_items.each do |product| %>
+      <tr>
+        <td>
+          <%= link_to Product.find(product.item_id).name, product_path(Product.find(product.item_id)) %>
+        </td>
+        <td>
+          <%= product.price %>
+        </td>
+        <td>
+          <%= product.quantity %>
+        </td>
+      </tr>
+      <% total += (product.price * product.quantity) %>
+    <% end %>
+  </table>
+  <strong>Total: <%=total%></strong>
+  <% else %>
+    <p>You have not added any product to your cart yet.</p>
+    <p> <%= link_to "Go on a shopping frenzy!", categories_path%> </p>
+  <% end %>
