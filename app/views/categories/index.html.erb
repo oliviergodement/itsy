@@ -1,10 +1,6 @@
-<div class="flash-box">
-  <%= flash[:info] %>
-</div>
-<br>
+<div class="flash-box"><%= flash[:info] %></div>
 <div class="container">
   <% @categories.each do |category| %>
-
     <% if(@categories.first == category || @categories[6] == category) %>
       <div class="col-md-8 col-sm-6">
       <div class="panel panel-info">
@@ -14,7 +10,7 @@
           <div class="panel-body">
             <% unless category.products.first == nil %>
               <% if category.products.first.pictures.size > 0 %>
-                <%= link_to((image_tag category.products.first.pictures.first.s3picture.url(:medium)), product_path(category.products.first)) %>
+                <%= link_to (image_tag category.products.first.pictures.first.s3picture.url(:medium)), product_path(category.products.first) %>
               <% end %>
             <% end %>
             <div class="text-right"><%= link_to(category.products.length.to_s + " products", category_path(category))%></div>

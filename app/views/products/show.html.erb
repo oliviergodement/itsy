@@ -1,50 +1,63 @@
 <div class="container">
 
 <div class="row">
-  <div class="col-sm4"><h1><%= @product.name.capitalize %></h1></div>
-  <div class="col-sm-4 pull-right text-right">
-    <%= link_to "Go back to the products list" , category_path(@product.category) %>
+  <div class="col-sm-7">
+    <h1 class="product-title"><%= @product.name.capitalize %></h1>
+    <% if policy(@product).update? %>
+      Edit <%= link_to "product details", edit_product_path(@product) %>,
+      <%= link_to "pictures", add_pictures_product_path(@product) %>
+    <% end %>
+    <% if policy(@product).destroy? %>
+        or <%= link_to "delete product", product_path(@product), method: 'delete' %>
+      <% end %>
+  </div>
+  <div class="col-sm-5">
+    <div class="pull-right"><%= button_to "Go back to the products list" , category_path(@product.category), method: :get, class: 'btn btn-info' %>
+    </div>
   </div>
 </div>
+<hr>
 
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-7">
       <% if @product.pictures.size > 0 %>
         <% @product.pictures.each do |picture| %>
-          <%= image_tag picture.s3picture.url(:medium) %>
+          <%= image_tag picture.s3picture.url(:medium), class: 'align' %>
         <% end %>
       <% end %>
     </div>
-    <div class="col-sm-7 infoswrapper">
-      <% unless @product.user_id == nil %>
-        <p>Added by <%= link_to User.find(@product.user_id).email, user_path(User.find(@product.user_id))%></p>
-      <% end %>
-      <p>Price :
-        <% if @product.price % 1 == 0 %>
-          <%= @product.price.to_i %>
-        <% else %>
-          <%= @product.price %>
-        <% end %> €
-      </p>
-      <p>Localization : <%= @product.localization %></p>
-      <p>Added on <%= @product.created_at.to_date %></p>
-      <p>Description : <em><%= @product.description %></em></p>
-      <%= button_to "Add to cart", shopping_cart_path(:product_id => @product), :class => "btn btn-success", method: 'POST' %>
-      <div>
-        <% if policy(@product).update? %>
-          <%= link_to "Edit product", edit_product_path(@product) %>
+    <div class="col-sm-5">
+      <div class="panel panel-info pull-right panel-width">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <p class="lead no-margin-bottom text-center">Price :
+            <strong>
+            <% if @product.price % 1 == 0 %>
+              <%= @product.price.to_i %>
+            <% else %>
+              <%= @product.price %>
+            <% end %> €
+            </strong>
+            </p>
+          </div>
+        </div>
+      <div class="panel-body">
+        <% unless @product.user_id == nil %>
+          <p class="user-infos">Added by <%= link_to User.find(@product.user_id).email, user_path(User.find(@product.user_id))%></p>
         <% end %>
+        <p>Localization : <%= @product.localization %></p>
+        <p>Added on <%= @product.created_at.to_date %></p>
+        <div class="text-center">
+          <hr>
+        <%= button_to "Add to cart", shopping_cart_path(product_id: @product), :class => "btn btn-lg btn-success", method: 'POST' %>
+        </div>
       </div>
-       <div>
-        <% if policy(@product).update? %>
-          <%= link_to "Edit pictures", add_pictures_product_path(@product) %>
-        <% end %>
-      </div>
-      <div>
-        <% if policy(@product).destroy? %>
-          <%= link_to "Delete product", product_path(@product), method: :delete %>
-        <% end %>
-      </div>
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10">
+      <p><strong>Description:</strong> <em><%= @product.description %></em></p>
     </div>
   </div>
 </div>

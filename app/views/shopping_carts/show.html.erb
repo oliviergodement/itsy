@@ -1,28 +1,51 @@
-<h3>Your cart</h3>
-
+<div class="container">
+  <div class="cart-container">
   <% if @shopping_cart.shopping_cart_items.length > 0 %>
-    <table class="table table-hover">
-      <th>Product</th>
-      <th>Price</th>
-      <th>Quantity</th>
-    <% total = 0 %>
-    <% @shopping_cart.shopping_cart_items.each do |product| %>
-      <tr>
-        <td>
-          <%= link_to Product.find(product.item_id).name, product_path(Product.find(product.item_id)) %>
-        </td>
-        <td>
-          <%= product.price %>
-        </td>
-        <td>
-          <%= product.quantity %>
-        </td>
-      </tr>
-      <% total += (product.price * product.quantity) %>
-    <% end %>
-  </table>
-  <strong>Total: <%=total%></strong>
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="lead">Your cart has <strong><%= pluralize(@shopping_cart.shopping_cart_items.length, 'product') %></strong></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+      <table class="table table-hover cart-table">
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th></th>
+      <% total = 0 %>
+      <% @shopping_cart.shopping_cart_items.each do |product| %>
+        <tr>
+          <td>
+            <%= link_to Product.find(product.item_id).name.capitalize, product_path(Product.find(product.item_id)) %>
+          </td>
+          <td>
+            <%= product.price %> €
+          </td>
+          <td>
+            <%= product.quantity %>
+          </td>
+          <td>
+            <div class="pull-right"><%= button_to "Remove from my cart", shopping_cart_path(product_id: product), method: :delete, class: 'btn btn-sm btn-danger' %></div>
+          </td>
+        </tr>
+          <% total += (product.price * product.quantity) %>
+      <% end %>
+      </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 pull-right">
+        <h4 class="text-right">Total: <%=total%> €</h4>
+      </div>
+    </div>
+    <div class="row checkout-btn">
+      <div class="col-sm-5"><%= button_to "Go back shopping", categories_path, class: "btn btn-info", method: :get %></div>
+      <div class="col-sm-5 pull-right"><%= button_to "I'm done! Checkout", categories_path, class: "btn btn-lg btn-success pull-right", method: :get %></div>
+    </div>
+    </div>
   <% else %>
-    <p>You have not added any product to your cart yet.</p>
-    <p> <%= link_to "Go on a shopping frenzy!", categories_path%> </p>
+    <h3>Your cart is empty.</h3>
+    <p> <%= button_to "Go on a shopping frenzy!", categories_path, method: :get, class: 'btn btn-info' %> </p>
   <% end %>
+</div>

@@ -28,3 +28,7 @@
 .links {
   font-size: 20px;
 }
+
+#force-inline {
+  display: inline;
+}
