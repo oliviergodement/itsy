@@ -1,0 +1,19 @@
+<%= form_tag charges_path do %>
+  <article>
+    <h2>You are about to check out your cart</h2>
+    <label class="amount">
+      <span>Total amount: <%= @shopping_cart.total %>€</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-name="Itsy"
+          data-description="Please enter your credit card infos"
+          data-amount= <%= (@shopping_cart.total*100).to_s %>
+          data-image="http://i.imgur.com/VpRRuwF.png"
+          data-currency="EUR"
+          data-panel-label="Pay {{amount}}"
+          data-label="Finish payment">
+  </script>
+<% end %>

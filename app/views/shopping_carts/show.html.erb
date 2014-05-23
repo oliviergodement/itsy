@@ -41,7 +41,7 @@
     </div>
     <div class="row checkout-btn">
       <div class="col-sm-5"><%= button_to "Go back shopping", categories_path, class: "btn btn-info", method: :get %></div>
-      <div class="col-sm-5 pull-right"><%= button_to "I'm done! Checkout", categories_path, class: "btn btn-lg btn-success pull-right", method: :get %></div>
+      <div class="col-sm-5 pull-right"><%= button_to "I'm done! Checkout", new_charge_path(@shopping_cart.id), class: "btn btn-lg btn-success pull-right", method: :get %></div>
     </div>
     </div>
   <% else %>
